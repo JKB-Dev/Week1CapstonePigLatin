@@ -24,6 +24,7 @@ public class PigLatinTranslator {
 			}
 
 			// assembleResult method prints here
+			
 			System.out.println();
 			System.out.println("Translate another line? (y/n): ");
 
@@ -59,12 +60,10 @@ public class PigLatinTranslator {
 		// condition for characters not being numbers or symbols
 		boolean alpha = true;
 
-		// cast chars as int and check if they are out of range
+		// check if chars are letters or single-quotes (to allow contractions)
 		for (int i = 0; i < split.length(); i++) {
-			int j = (int) split.charAt(i);
-			if (((j < 32) || ((j > 39) && (j < 65))) || ((j > 90) && (j < 97)) || (j > 122)) {
+			if (!(Character.isLetter(split.charAt(i)) || ((int) split.charAt(i) == 39))) {
 				alpha = false;
-
 			}
 		}
 
